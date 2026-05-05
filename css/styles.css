@@ -344,8 +344,8 @@ img {
 .footer-logos img {
   width: auto;
   height: auto;
-  max-height: 34px;
-  max-width: 100px;
+  max-height: 28px;
+  max-width: 85px;
   object-fit: contain;
   background: #ffffff;
   padding: 0.3rem;
