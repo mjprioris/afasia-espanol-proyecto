@@ -328,3 +328,34 @@ img {
     font-size: 2rem;
   }
 }
+
+
+/* ===========================
+   AJUSTE DE LOGOS DEL FOOTER
+=========================== */
+
+.footer-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.footer-logos img {
+  width: auto;
+  height: auto;
+  max-height: 34px;
+  max-width: 100px;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 0.3rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+@media (max-width: 760px) {
+  .footer-logos img {
+    max-height: 30px;
+    max-width: 90px;
+  }
+}
