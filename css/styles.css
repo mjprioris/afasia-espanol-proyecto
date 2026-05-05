@@ -334,28 +334,32 @@ img {
    AJUSTE DE LOGOS DEL FOOTER
 =========================== */
 
+/* Logos del footer sin recuadro */
 .footer-logos {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 1rem;
   align-items: center;
 }
 
 .footer-logos img {
-  width: auto;
-  height: auto;
-  max-height: 28px;
-  max-width: 85px;
+  width: auto !important;
+  height: auto !important;
+  max-height: 44px !important;
+  max-width: 120px !important;
   object-fit: contain;
-  background: #ffffff;
-  padding: 0.3rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.35);
+
+  /* Sin recuadro */
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 @media (max-width: 760px) {
   .footer-logos img {
-    max-height: 30px;
-    max-width: 90px;
+    max-height: 30px !important;
+    max-width: 100px !important;
   }
 }
