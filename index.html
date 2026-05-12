@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIMAF-ES | Caracterización dimensional de la afasia en español</title>
+    <meta name="description" content="Proyecto de investigación para optimizar la evaluación de la afasia post-ictus en población hispanohablante">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #0066cc;
+            --color-primary-dark: #004999;
+            --color-accent: #00a896;
+            --color-text: #1a1a1a;
+            --color-text-muted: #666;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-border: #e0e0e0;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            line-height: 1.6;
+            background: var(--color-bg);
+        }
+
+        /* Header y navegación */
+        header {
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Secciones */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--color-primary-dark);
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--color-bg);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary-dark);
+        }
+
+        .card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary-dark);
+        }
+
+        .card p {
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* Títulos de sección */
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary-dark);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary-dark);
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        /* Contenido de texto */
+        .content-box {
+            background: var(--color-bg-alt);
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .content-box p {
+            margin-bottom: 1rem;
+        }
+
+        .content-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Imagen RGB */
+        .diagram-container {
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Formulario */
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: var(--font-sans);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .radio-group input[type="radio"] {
+            margin-right: 0.5rem;
+            width: auto;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        /* Equipo */
+        .team-member {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .team-member:last-child {
+            border-bottom: none;
+        }
+
+        .team-member h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member .role {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-member .email {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .team-member .email:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary-dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        footer h4 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: white;
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .footer-logos {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-logos img {
+            height: 80px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-logos img:hover {
+            opacity: 1;
+        }
+
+        /* Logo en header */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .footer-logos {
+                justify-content: center;
+            }
+
+            .footer-logos img {
+                height: 60px;
+            }
+        }
+
+        /* Iconos simples con emojis */
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header y navegación -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <a href="#home" class="logo">DIMAF-ES</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#divulgativa">Información</a></li>
+                <li><a href="#cientifica">Investigadores</a></li>
+                <li><a href="#participar">Participar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Proyecto DIMAF-ES</h1>
+        <p class="subtitle">Caracterización dimensional de la afasia en español<br>para la optimización de la evaluación clínica</p>
+        
+        <p>La afasia es una alteración del lenguaje que afecta a aproximadamente una de cada tres personas que sufren un ictus. Este proyecto desarrolla el primer modelo dimensional de caracterización de la afasia específicamente diseñado para hablantes de español, integrando pruebas lingüísticas, análisis sistemático del discurso espontáneo y medidas cognitivas para identificar perfiles individuales con mayor precisión y optimizar la evaluación clínica.</p>
+        
+        <p style="color: #B45309; font-size: 0.95rem; margin-top: 1.5rem; font-weight: 500;">
+            ⏳ ESTADO DE FINANCIACIÓN: Pendiente de resolución — Convocatoria 2026 Línea 2, Junta de Andalucía | Proyectos de I+D+i para el desarrollo de investigación aplicada y experimental en el marco del PAIDI 2020
+        </p>
+
+        <a href="#participar" class="btn btn-primary" style="margin-top: 2rem;">👥 ¿Quieres participar?</a>
+
+        <div class="btn-group">
+            <a href="#divulgativa" class="btn btn-secondary">📖 Información divulgativa</a>
+            <a href="#cientifica" class="btn btn-secondary">🔬 Información científica</a>
+        </div>
+    </section>
+
+    <!-- Sección Divulgativa -->
+    <section id="divulgativa">
+        <h2>📖 Información para pacientes y familias</h2>
+
+        <h3>¿Qué es la afasia?</h3>
+        <p>La afasia es una alteración del lenguaje causada por un daño cerebral, generalmente tras un ictus. Puede afectar tanto a la capacidad de hablar como a la de entender lo que otros dicen, y cada persona se ve afectada de manera diferente.</p>
+
+        <div class="content-box">
+            <h4>¿Cómo puede afectar la afasia?</h4>
+            <p>Las personas con afasia pueden tener dificultades para:</p>
+            <ul>
+                <li>Encontrar las palabras que quieren decir</li>
+                <li>Formar frases completas</li>
+                <li>Entender lo que otros dicen</li>
+                <li>Leer y escribir</li>
+                <li>Mantener conversaciones fluidas</li>
+            </ul>
+            <p>Estas dificultades tienen un impacto importante en el día a día: limitan la independencia, las relaciones sociales, el trabajo y el bienestar emocional de las personas afectadas y de sus familias.</p>
+        </div>
+
+        <h3>¿Por qué es importante este proyecto?</h3>
+
+        <h4>Lo que pasa hoy en día</h4>
+        <p>Cuando una persona tiene afasia, se le hacen pruebas para ver qué tipo de afasia tiene. El problema es que:</p>
+        <ul>
+            <li>Muchas personas no encajan claramente en ningún tipo</li>
+            <li>Dos personas con el mismo diagnóstico pueden tener problemas muy diferentes</li>
+            <li>Las pruebas que se usan no siempre muestran las dificultades reales que tiene la persona al hablar en su vida cotidiana</li>
+            <li>Casi toda la investigación sobre afasia se ha hecho en inglés, y el español tiene características diferentes</li>
+        </ul>
+
+        <h4>Nuestra propuesta</h4>
+        <p>Este proyecto busca una forma nueva de entender y evaluar la afasia en español.</p>
+
+        <div class="diagram-container">
+            <h4>Un ejemplo para entenderlo mejor:</h4>
+            <p><strong>Imagina que queremos describir los colores.</strong> Una forma sería poner etiquetas: "rojo", "azul", "verde", "amarillo"... Pero ¿qué pasa con el naranja? ¿Es rojo o amarillo? ¿Y el morado? ¿Y todos los tonos intermedios?</p>
+            
+            <p>En cambio, si usamos el sistema RGB (como en las pantallas), <strong>cualquier color se puede describir con precisión usando tres valores</strong>: cuánto rojo tiene, cuánto verde y cuánto azul. Así podemos describir millones de colores diferentes con solo tres dimensiones, en lugar de intentar meterlos todos en unas pocas categorías.</p>
+
+            <svg width="100%" viewBox="0 0 680 520" style="max-width: 800px; margin: 2rem auto; display: block;">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<text style="font-size: 18px; font-weight: 600; fill: #004999" x="340" y="35" text-anchor="middle">Enfoque de categorías</text>
+<text style="font-size: 14px; fill: #666" x="340" y="52" text-anchor="middle">Intentar meter cada color en una caja</text>
+
+<rect x="60" y="75" width="110" height="80" rx="8" fill="#E63946" stroke="#333" stroke-width="1"/>
+<text style="font-size: 16px; font-weight: 600; fill: #fff" x="115" y="122" text-anchor="middle">Rojo</text>
+
+<rect x="190" y="75" width="110" height="80" rx="8" fill="#F4A261" stroke="#333" stroke-width="1"/>
+<text style="font-size: 16px; font-weight: 600; fill: #2C2C2A" x="245" y="110" text-anchor="middle">Naranja</text>
+<text style="font-size: 12px; fill: #2C2C2A" x="245" y="134" text-anchor="middle">¿Rojo o amarillo?</text>
+
+<rect x="320" y="75" width="110" height="80" rx="8" fill="#F1C40F" stroke="#333" stroke-width="1"/>
+<text style="font-size: 16px; font-weight: 600; fill: #2C2C2A" x="375" y="122" text-anchor="middle">Amarillo</text>
+
+<rect x="450" y="75" width="110" height="80" rx="8" fill="#2ECC71" stroke="#333" stroke-width="1"/>
+<text style="font-size: 16px; font-weight: 600; fill: #fff" x="505" y="122" text-anchor="middle">Verde</text>
+
+<text style="font-size: 14px; fill: #E63946" x="340" y="182" text-anchor="middle">↓ ¿Y todos los tonos intermedios? ¿Y el morado? ¿Y el rosa?</text>
+
+<line x1="60" y1="220" x2="620" y2="220" stroke="#ccc" stroke-width="2"/>
+
+<text style="font-size: 18px; font-weight: 600; fill: #004999" x="340" y="255" text-anchor="middle">Enfoque dimensional (RGB)</text>
+<text style="font-size: 14px; fill: #666" x="340" y="272" text-anchor="middle">Describir cada color con tres valores</text>
+
+<rect x="100" y="300" width="480" height="32" rx="4" fill="#ffebeb" stroke="#E63946" stroke-width="1"/>
+<rect x="100" y="300" width="340" height="32" rx="4" fill="#E63946" opacity="0.7"/>
+<text style="font-size: 14px; fill: #E63946" x="90" y="320" text-anchor="end" dominant-baseline="central">R</text>
+<text style="font-size: 14px; fill: #E63946" x="590" y="320" text-anchor="start">255</text>
+
+<rect x="100" y="350" width="480" height="32" rx="4" fill="#ebf7ee" stroke="#2ECC71" stroke-width="1"/>
+<rect x="100" y="350" width="240" height="32" rx="4" fill="#2ECC71" opacity="0.7"/>
+<text style="font-size: 14px; fill: #2ECC71" x="90" y="370" text-anchor="end" dominant-baseline="central">G</text>
+<text style="font-size: 14px; fill: #2ECC71" x="590" y="370" text-anchor="start">180</text>
+
+<rect x="100" y="400" width="480" height="32" rx="4" fill="#ebf1fb" stroke="#3498DB" stroke-width="1"/>
+<rect x="100" y="400" width="120" height="32" rx="4" fill="#3498DB" opacity="0.7"/>
+<text style="font-size: 14px; fill: #3498DB" x="90" y="420" text-anchor="end" dominant-baseline="central">B</text>
+<text style="font-size: 14px; fill: #3498DB" x="590" y="420" text-anchor="start">90</text>
+
+<rect x="280" y="450" width="120" height="50" rx="6" fill="rgb(255,180,90)" stroke="#333" stroke-width="2"/>
+<text style="font-size: 12px; fill: #666" x="340" y="508" text-anchor="middle">Color único resultante</text>
+
+<text style="font-size: 14px; fill: #666" x="340" y="540" text-anchor="middle">Cada persona con afasia tiene su propio "perfil" en múltiples dimensiones:</text>
+<text style="font-size: 14px; fill: #666" x="340" y="558" text-anchor="middle">fluidez, comprensión, gramática, encontrar palabras...</text>
+</svg>
+        </div>
+
+        <h4>Con la afasia pasa algo parecido:</h4>
+        <p>En lugar de intentar meter a cada persona en una categoría ("afasia de Broca", "afasia de Wernicke"...), queremos ver qué aspectos concretos del lenguaje están más o menos afectados en cada persona. Por ejemplo:</p>
+        <ul>
+            <li>¿Cómo está la capacidad para encontrar palabras?</li>
+            <li>¿Cómo está la comprensión?</li>
+            <li>¿Cómo está la fluidez al hablar?</li>
+            <li>¿Cómo está la gramática?</li>
+        </ul>
+        <p>Cada persona tendrá su propio "perfil" en estas dimensiones, igual que cada color tiene sus propios valores de rojo, verde y azul.</p>
+
+        <p>Además:</p>
+        <ul>
+            <li>Vamos a analizar no solo cómo se hacen las pruebas, sino también cómo habla la persona de forma natural en su día a día</li>
+            <li>Queremos saber qué pruebas son realmente útiles y cuáles no aportan información nueva</li>
+        </ul>
+
+        <div class="content-box">
+            <h4>¿Para qué servirá?</h4>
+            <p>Los resultados ayudarán a:</p>
+            <ul>
+                <li>✅ Saber con más precisión qué dificultades concretas tiene cada persona</li>
+                <li>✅ Personalizar mejor los tratamientos según el perfil de cada uno</li>
+                <li>✅ Ver más claramente cómo va la recuperación en cada aspecto</li>
+                <li>✅ Detectar problemas leves que ahora pasan desapercibidos</li>
+                <li>✅ No repetir pruebas innecesarias</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#participar" class="btn btn-primary">📝 Quiero participar en el proyecto</a>
+        </div>
+    </section>
+
+    <!-- Sección Científica -->
+    <section id="cientifica">
+        <h2>🔬 Información para investigadores y profesionales</h2>
+
+        <h3>Resumen del proyecto</h3>
+        <p><strong>Título completo:</strong> Caracterización dimensional de la afasia en español para la optimización de la evaluación clínica (DIMAF-ES)</p>
+        <p><strong>Acrónimo:</strong> DIMAF-ES (Dimensional characterization of aphasia in Spanish for the optimization of clinical assessment)</p>
+        <p><strong>Entidad ejecutora:</strong> Universidad de Málaga - Facultad de Psicología y Logopedia</p>
+
+        <div class="content-box">
+            <p>La evaluación y caracterización de la afasia post-ictus continúa basándose en gran medida en clasificaciones sindrómicas que presentan limitaciones relevantes: elevada proporción de casos inclasificables, marcada heterogeneidad intrasindrómica, y escasa correspondencia entre categorías clínicas y patrones lesionales.</p>
+            
+            <p>Los enfoques dimensionales basados en datos (data-driven) han mostrado que las pruebas clínicas habituales no son medidas puras de procesos únicos, sino que combinan demandas fonológicas, semánticas, ejecutivas y atencionales, lo que requiere técnicas multivariantes para identificar los componentes latentes que explican la variabilidad del perfil afásico.</p>
+            
+            <p>El proyecto DIMAF-ES abordará dos limitaciones principales de estos modelos: (1) sesgo anglófono, que dificulta su generalización al español; y (2) infrarrepresentación del discurso espontáneo, que limita la caracterización de perfiles leves, residuales o funcionalmente complejos.</p>
+        </div>
+
+        <h3>Objetivos</h3>
+        <h4>Objetivo general</h4>
+        <p>Desarrollar empíricamente un modelo dimensional de caracterización de la afasia en hablantes nativos de español con el fin de identificar los componentes que explican la variabilidad del perfil lingüístico-comunicativo y derivar criterios empíricos para seleccionar pruebas, tareas e indicadores clínicamente informativos, sensibles y no redundantes.</p>
+
+        <h4>Objetivos técnicos</h4>
+        <ul>
+            <li><strong>OT1.</strong> Diseñar y aplicar un protocolo amplio de evaluación lingüístico-comunicativa y cognitiva de la afasia en español.</li>
+            <li><strong>OT2.</strong> Identificar los componentes lingüístico-comunicativos que explican la variabilidad del perfil afásico en hablantes nativos de español y explorar la contribución de funciones cognitivas de dominio general.</li>
+            <li><strong>OT3.</strong> Determinar la contribución específica de las medidas de lenguaje espontáneo a la caracterización de los perfiles afásicos.</li>
+            <li><strong>OT4.</strong> Evaluar la contribución factorial, redundancia y factibilidad clínica de las medidas incluidas y derivar una propuesta de indicadores candidatos para optimizar la evaluación.</li>
+        </ul>
+
+        <h3>Metodología</h3>
+        <p><strong>Diseño:</strong> Estudio observacional transversal aplicado</p>
+        <p><strong>Muestra:</strong> 40 personas con afasia post-ictus, hablantes nativos de español, 18-75 años</p>
+
+        <h4>Protocolo de evaluación</h4>
+        <p>El protocolo integra:</p>
+        <ul>
+            <li><strong>Pruebas lingüísticas estructuradas</strong> (BETA: discriminación fonológica, denominación, comprensión, repetición, sinónimos, lectura)</li>
+            <li><strong>Tareas específicas del español</strong> (producción elicitada de clíticos pronominales y morfología verbal flexiva)</li>
+            <li><strong>Discurso espontáneo</strong> (descripción de láminas, narración de cuento con apoyo visual, discurso procedimental) → métricas de productividad, fluidez temporal, diversidad léxica, distribución gramatical, complejidad sintáctica y contenido informativo</li>
+            <li><strong>Medidas cognitivas</strong> (memoria de trabajo, razonamiento, velocidad de procesamiento, flexibilidad, atención, inhibición)</li>
+        </ul>
+
+        <h4>Análisis</h4>
+        <p>Se realizarán tres análisis de componentes principales (PCA) con rotación varimax:</p>
+        <ul>
+            <li><strong>PCA 1 Lingüístico:</strong> pruebas estructuradas + tareas específicas español (14 variables)</li>
+            <li><strong>PCA 2 Combinado (principal):</strong> PCA1 + discurso espontáneo (20 variables)</li>
+            <li><strong>PCA 3 Ampliado exploratorio:</strong> PCA2 + medidas cognitivas (27 variables)</li>
+        </ul>
+        <p>La comparación entre modelos cuantificará la contribución específica del discurso espontáneo.</p>
+
+        <h3>Equipo investigador</h3>
+
+        <div class="team-member">
+            <h4>Dra. María José Torres Prioris</h4>
+            <p class="role">Investigadora Principal<br>
+            Profesora Ayudante Doctora<br>
+            Departamento de Psicobiología y Metodología de las Ciencias del Comportamiento<br>
+            Universidad de Málaga</p>
+            <p><strong>Líneas de investigación:</strong></p>
+            <ul>
+                <li>Neuropsicología del lenguaje y afasia post-ictus</li>
+                <li>Producción del habla y análisis del discurso espontáneo</li>
+                <li>Plasticidad cerebral y recuperación funcional</li>
+                <li>Caracterización de perfiles afásicos mediante neuroimagen multimodal</li>
+            </ul>
+            <p>📧 <a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></p>
+        </div>
+
+        <div class="team-member">
+            <h4>Dra. Diana López Barroso</h4>
+            <p class="role">Co-Investigadora Principal<br>
+            Investigadora Ramón y Cajal<br>
+            Departamento de Psicobiología y Metodología de las Ciencias del Comportamiento<br>
+            Universidad de Málaga</p>
+            <p><strong>Líneas de investigación:</strong></p>
+            <ul>
+                <li>Diferencias individuales en funciones cognitivas complejas</li>
+                <li>Recuperación del lenguaje en afasia post-ictus</li>
+                <li>Neuroimagen clínica y evaluación neuropsicológica</li>
+                <li>Predicción de diferencias cognitivas en población sana y clínica</li>
+            </ul>
+            <p>📧 <a href="mailto:dlopbarroso@uma.es" class="email">dlopbarroso@uma.es</a></p>
+        </div>
+
+        <h3>Financiación y convocatoria</h3>
+        <p><strong>Entidad financiadora:</strong> Junta de Andalucía - Consejería de Universidad, Investigación e Innovación</p>
+        <p><strong>Convocatoria:</strong> Convocatoria 2026 - Línea 2: Proyectos de I+D+i en el ámbito del Plan Andaluz de Investigación, Desarrollo e Innovación (PAIDI 2020)</p>
+        <p><strong>Duración:</strong> 24 meses (2026-2028)</p>
+        <p><strong>Presupuesto:</strong> 92.166,71 €</p>
+
+        <h3>Colaboraciones</h3>
+        <p>Si eres profesional sanitario (neurólogo/a, logopeda, neuropsicólogo/a) y deseas colaborar derivando pacientes o estableciendo una colaboración, contacta con nosotras:</p>
+        <p>📧 <strong><a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></strong></p>
+
+        <h3>Aprobación ética</h3>
+        <p>El proyecto ha sido aprobado por el <strong>Comité de Ética de Investigación de la Universidad de Málaga</strong>.</p>
+    </section>
+
+    <!-- Sección Participar -->
+    <section id="participar">
+        <h2>👥 ¿Quieres participar?</h2>
+        <p style="font-size: 1.2rem; text-align: center; margin-bottom: 2rem;">Buscamos personas con afasia tras un ictus para un estudio sobre evaluación del lenguaje</p>
+
+        <h3>¿A quién buscamos?</h3>
+        <div class="content-box">
+            <p>Estamos buscando personas que:</p>
+            <ul>
+                <li>✅ Hayan tenido <strong>afasia tras un ictus</strong></li>
+                <li>✅ Sean <strong>hablantes nativos de español</strong></li>
+                <li>✅ Tengan entre <strong>18 y 75 años</strong></li>
+                <li>✅ Puedan participar en <strong>dos sesiones de evaluación</strong></li>
+            </ul>
+        </div>
+
+        <h3>¿Qué tendré que hacer?</h3>
+        <p>Participar consiste en completar <strong>dos sesiones</strong> de evaluación, de aproximadamente <strong>2 a 2,5 horas cada una</strong>. Siempre haremos pausas cuando las necesites.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <span class="icon">🗣️</span>
+                <h4>Hablarás</h4>
+                <p>Describirás algunas láminas, contarás un cuento tradicional que conozcas (con apoyo de imágenes), y explicarás cómo se hace algo cotidiano.</p>
+            </div>
+            <div class="card">
+                <span class="icon">📝</span>
+                <h4>Harás pruebas de lenguaje</h4>
+                <p>Emparejar palabras con dibujos, repetir palabras y frases, leer palabras, y otras tareas sencillas de lenguaje.</p>
+            </div>
+            <div class="card">
+                <span class="icon">🧠</span>
+                <h4>Realizarás tareas cognitivas</h4>
+                <p>Memoria (recordar números), atención, y tareas visuales sencillas.</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin: 2rem 0;"><strong>Todo a tu ritmo, sin presión, en un ambiente tranquilo y cómodo.</strong></p>
+
+        <h3>¿Dónde será?</h3>
+        <p>📍 <strong>Preferentemente en:</strong></p>
+        <p><strong>Unidad de Neurociencia Cognitiva y Afasia</strong><br>
+        Facultad de Psicología y Logopedia<br>
+        Universidad de Málaga<br>
+        Campus de Teatinos s/n, 29071 Málaga</p>
+
+        <p>🚗 <strong>Si vives en otra provincia de Andalucía:</strong> Podemos valorar opciones para realizar la evaluación en tu zona o en un centro colaborador cercano.</p>
+
+        <h3>¿Qué recibo a cambio?</h3>
+        <ul>
+            <li>✅ Contribuyes al avance científico sobre la afasia en español</li>
+            <li>✅ Evaluación completa del lenguaje sin coste</li>
+            <li>✅ Informe de resultados si lo solicitas</li>
+            <li>✅ Compensación del transporte si tienes dificultades de movilidad</li>
+        </ul>
+
+        <h3>¿Mis datos estarán protegidos?</h3>
+        <p><strong>Sí, absolutamente.</strong></p>
+        <ul>
+            <li>Todos los datos se tratarán de forma <strong>confidencial</strong></li>
+            <li>Se te asignará un <strong>código anónimo</strong></li>
+            <li>Los archivos se almacenarán de forma <strong>segura</strong> cumpliendo la normativa RGPD</li>
+            <li>Nunca se publicarán datos que permitan identificarte</li>
+            <li>El proyecto está <strong>aprobado por el Comité de Ética</strong> de la Universidad de Málaga</li>
+        </ul>
+
+        <h3>Formulario de contacto</h3>
+        <form action="https://formspree.io/f/mrejjlpz" method="post">
+            <div class="form-group">
+                <label>Selecciona tu perfil:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="perfil" value="paciente" required>
+                        Soy una persona con afasia y quiero participar
+                    </label>
+                    <label>
+                        <input type="radio" name="perfil" value="familiar">
+                        Soy familiar de una persona con afasia
+                    </label>
+                    <label>
+                        <input type="radio" name="perfil" value="profesional">
+                        Soy profesional sanitario (logopeda, neurólogo/a, etc.) y quiero derivar un paciente o colaborar
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre y apellidos: *</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email: *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono">
+            </div>
+
+            <div class="form-group">
+                <label for="provincia">Provincia:</label>
+                <select id="provincia" name="provincia">
+                    <option value="">Selecciona tu provincia</option>
+                    <option value="almeria">Almería</option>
+                    <option value="cadiz">Cádiz</option>
+                    <option value="cordoba">Córdoba</option>
+                    <option value="granada">Granada</option>
+                    <option value="huelva">Huelva</option>
+                    <option value="jaen">Jaén</option>
+                    <option value="malaga">Málaga</option>
+                    <option value="sevilla">Sevilla</option>
+                    <option value="otra">Otra</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Mensaje (opcional):</label>
+                <textarea id="mensaje" name="mensaje"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="privacidad" name="privacidad" required>
+                    <label for="privacidad">He leído y acepto la política de privacidad y protección de datos</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar consulta</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--color-bg-alt); border-radius: 12px;">
+            <h4>Contacto directo</h4>
+            <p>¿Prefieres llamar o escribir directamente?</p>
+            <p><strong>📧 Email:</strong> <a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>Proyecto DIMAF-ES</h4>
+                <p>Universidad de Málaga</p>
+                <p>Facultad de Psicología y Logopedia</p>
+                <p>Campus de Teatinos s/n</p>
+                <p>29071 Málaga</p>
+            </div>
+            <div>
+                <h4>Contacto</h4>
+                <p>📧 <a href="mailto:mjprioris@uma.es">mjprioris@uma.es</a></p>
+            </div>
+            <div>
+                <h4>Enlaces</h4>
+                <p><a href="#home">Inicio</a></p>
+                <p><a href="#divulgativa">Información divulgativa</a></p>
+                <p><a href="#cientifica">Información científica</a></p>
+                <p><a href="#participar">Participar</a></p>
+            </div>
+            <div>
+                <h4>Financiación solicitada</h4>
+                <p>Junta de Andalucía</p>
+                <p>Convocatoria 2026 - Línea 2</p>
+            </div>
+        </div>
+        
+        <!-- LOGOS HORIZONTALES ANTES DEL COPYRIGHT -->
+        <div style="display: flex; justify-content: center; align-items: center; gap: 3rem; margin-top: 3rem; margin-bottom: 2rem; flex-wrap: wrap;">
+            <img src="logo-uma.png" alt="Universidad de Málaga" style="height: 120px; width: auto; opacity: 0.9;">
+            <img src="logo-facultad.png" alt="Facultad Psicología y Logopedia" style="height: 120px; width: auto; opacity: 0.9;">
+        </div>
+        
+        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2);">
+            <p>&copy; 2026 Proyecto DIMAF-ES. Todos los derechos reservados.</p>
+            <p style="margin-top: 0.5rem;">Universidad de Málaga - Facultad de Psicología y Logopedia</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                <a href="#">Aviso legal</a> | 
+                <a href="#">Política de privacidad</a> | 
+                <a href="#">Protección de datos</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
