@@ -385,6 +385,18 @@
             text-decoration: underline;
         }
 
+        .person-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(0, 102, 204, 0.35);
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .person-link:hover {
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
         /* Grupos del equipo */
         .team-group {
             display: inline-block;
@@ -996,7 +1008,7 @@
         <p class="team-group">Investigadoras principales</p>
 
         <div class="team-member">
-            <h4>Dra. María José Torres Prioris</h4>
+            <h4><a href="https://mjprioris.github.io/" target="_blank" rel="noopener" class="person-link">Dra. María José Torres Prioris</a></h4>
             <p class="role">Investigadora Principal<br>
             Profesora Ayudante Doctora<br>
             Departamento de Psicobiología y Metodología de las Ciencias del Comportamiento<br>
@@ -1010,6 +1022,8 @@
             </ul>
             <p class="meta-line"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></p>
 <div class="academic-links" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.9rem;">
+    <a href="https://mjprioris.github.io/" target="_blank" rel="noopener" style="color: #0066cc; text-decoration: none; font-weight: 500;">Web personal</a>
+    <span style="color: #666;">|</span>
     <a href="https://portaldelainvestigacion.uma.es/investigadores/1104282/detalle" target="_blank" style="color: #0066cc; text-decoration: none; font-weight: 500;">Portal Académico</a>
     <span style="color: #666;">|</span>
         <a href="https://orcid.org/0000-0003-3795-8151" target="_blank" style="color: #0066cc; text-decoration: none; font-weight: 500;">ORCID</a>
