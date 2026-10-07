@@ -487,15 +487,93 @@
             }
         }
 
-        /* Iconos simples con emojis */
+        /* Iconos de línea (SVG, estilo Lucide) */
+        .i {
+            width: 1.1em;
+            height: 1.1em;
+            vertical-align: -0.18em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.75;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
         .icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            display: block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.25rem;
+            height: 3.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 50%;
+            background: rgba(0, 102, 204, 0.08);
+            color: var(--color-primary);
+        }
+
+        .icon .i {
+            width: 1.6rem;
+            height: 1.6rem;
+            vertical-align: 0;
+        }
+
+        .meta-line .i {
+            color: var(--color-primary);
+            margin-right: 0.4rem;
+        }
+
+        footer .meta-line .i {
+            color: inherit;
+            opacity: 0.85;
+        }
+
+        .btn .i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover .i {
+            transform: translateX(3px);
+        }
+
+        /* Listas con marca de verificación */
+        ul.check-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        ul.check-list li {
+            position: relative;
+            padding-left: 1.9rem;
+        }
+
+        ul.check-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.2em;
+            width: 1.15em;
+            height: 1.15em;
+            background-color: var(--color-accent);
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
         }
     </style>
 </head>
 <body>
+
+    <!-- Iconos SVG (Lucide, licencia ISC) -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+        <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+        <symbol id="i-speech" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+        <symbol id="i-brain" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></symbol>
+    </svg>
 
     <!-- Header y navegación -->
     <header>
@@ -520,20 +598,20 @@
         <p>La afasia es una alteración del lenguaje que afecta a aproximadamente una de cada tres personas que sufren un ictus. Este proyecto desarrolla el primer modelo dimensional de caracterización de la afasia específicamente diseñado para hablantes de español, integrando pruebas lingüísticas, análisis sistemático del discurso espontáneo y medidas cognitivas para identificar perfiles individuales con mayor precisión y optimizar la evaluación clínica.</p>
         
         <p style="color: #B45309; font-size: 0.95rem; margin-top: 1.5rem; font-weight: 500;">
-            ⏳ ESTADO DE FINANCIACIÓN: Pendiente de resolución — Convocatoria 2026 Línea 2, Junta de Andalucía | Proyectos de I+D+i para el desarrollo de investigación aplicada y experimental en el marco del PAIDI 2020
+            <svg class="i" aria-hidden="true"><use href="#i-clock"/></svg> ESTADO DE FINANCIACIÓN: Pendiente de resolución — Convocatoria 2026 Línea 2, Junta de Andalucía | Proyectos de I+D+i para el desarrollo de investigación aplicada y experimental en el marco del PAIDI 2020
         </p>
 
-        <a href="#participar" class="btn btn-primary" style="margin-top: 2rem;">👥 ¿Quieres participar?</a>
+        <a href="#participar" class="btn btn-primary" style="margin-top: 2rem;">¿Quieres participar?<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 
         <div class="btn-group">
-            <a href="#divulgativa" class="btn btn-secondary">📖 Información divulgativa</a>
-            <a href="#cientifica" class="btn btn-secondary">🔬 Información científica</a>
+            <a href="#divulgativa" class="btn btn-secondary">Información divulgativa</a>
+            <a href="#cientifica" class="btn btn-secondary">Información científica</a>
         </div>
     </section>
 
     <!-- Sección Divulgativa -->
     <section id="divulgativa">
-        <h2>📖 Información para pacientes y familias</h2>
+        <h2>Información para pacientes y familias</h2>
 
         <h3>¿Qué es la afasia?</h3>
         <p>La afasia es una alteración del lenguaje causada por un daño cerebral, generalmente tras un ictus. Puede afectar tanto a la capacidad de hablar como a la de entender lo que otros dicen, y cada persona se ve afectada de manera diferente.</p>
@@ -643,23 +721,23 @@
         <div class="content-box">
             <h4>¿Para qué servirá?</h4>
             <p>Los resultados ayudarán a:</p>
-            <ul>
-                <li>✅ Saber con más precisión qué dificultades concretas tiene cada persona</li>
-                <li>✅ Personalizar mejor los tratamientos según el perfil de cada uno</li>
-                <li>✅ Ver más claramente cómo va la recuperación en cada aspecto</li>
-                <li>✅ Detectar problemas leves que ahora pasan desapercibidos</li>
-                <li>✅ No repetir pruebas innecesarias</li>
+            <ul class="check-list">
+                <li>Saber con más precisión qué dificultades concretas tiene cada persona</li>
+                <li>Personalizar mejor los tratamientos según el perfil de cada uno</li>
+                <li>Ver más claramente cómo va la recuperación en cada aspecto</li>
+                <li>Detectar problemas leves que ahora pasan desapercibidos</li>
+                <li>No repetir pruebas innecesarias</li>
             </ul>
         </div>
 
         <div style="text-align: center; margin-top: 3rem;">
-            <a href="#participar" class="btn btn-primary">📝 Quiero participar en el proyecto</a>
+            <a href="#participar" class="btn btn-primary">Quiero participar en el proyecto<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
     </section>
 
     <!-- Sección Científica -->
     <section id="cientifica">
-        <h2>🔬 Información para investigadores y profesionales</h2>
+        <h2>Información para investigadores y profesionales</h2>
 
         <h3>Resumen del proyecto</h3>
         <p><strong>Título completo:</strong> Caracterización dimensional de la afasia en español para la optimización de la evaluación clínica (DIMAF-ES)</p>
@@ -723,7 +801,7 @@
                 <li>Plasticidad cerebral y recuperación funcional</li>
                 <li>Caracterización de perfiles afásicos mediante neuroimagen multimodal</li>
             </ul>
-            <p>📧 <a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></p>
+            <p class="meta-line"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></p>
 <div class="academic-links" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.9rem;">
     <a href="https://portaldelainvestigacion.uma.es/investigadores/1104282/detalle" target="_blank" style="color: #0066cc; text-decoration: none; font-weight: 500;">Portal Académico</a>
     <span style="color: #666;">|</span>
@@ -748,7 +826,7 @@
                 <li>Neuroimagen clínica y evaluación neuropsicológica</li>
                 <li>Predicción de diferencias cognitivas en población sana y clínica</li>
             </ul>
-            <p>📧 <a href="mailto:dlopbarroso@uma.es" class="email">dlopbarroso@uma.es</a></p>
+            <p class="meta-line"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:dlopbarroso@uma.es" class="email">dlopbarroso@uma.es</a></p>
                         <div class="academic-links" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-size: 0.9rem;">
                 <a href="https://portaldelainvestigacion.uma.es/investigadores/1292858/detalle" target="_blank" style="color: #0066cc; text-decoration: none; font-weight: 500;">Portal Académico</a>
                 <span style="color: #666;">|</span>
@@ -768,7 +846,7 @@
 
         <h3>Colaboraciones</h3>
         <p>Si eres profesional sanitario (neurólogo/a, logopeda, neuropsicólogo/a) y deseas colaborar derivando pacientes o estableciendo una colaboración, contacta con nosotras:</p>
-        <p>📧 <strong><a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></strong></p>
+        <p class="meta-line"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><strong><a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></strong></p>
         
 
         <h3>Aprobación ética</h3>
@@ -777,17 +855,17 @@
 
     <!-- Sección Participar -->
     <section id="participar">
-        <h2>👥 ¿Quieres participar?</h2>
+        <h2>¿Quieres participar?</h2>
         <p style="font-size: 1.2rem; text-align: center; margin-bottom: 2rem;">Buscamos personas con afasia tras un ictus para un estudio sobre evaluación del lenguaje</p>
 
         <h3>¿A quién buscamos?</h3>
         <div class="content-box">
             <p>Estamos buscando personas que:</p>
-            <ul>
-                <li>✅ Hayan tenido <strong>afasia tras un ictus</strong></li>
-                <li>✅ Sean <strong>hablantes nativos de español</strong></li>
-                <li>✅ Tengan entre <strong>18 y 75 años</strong></li>
-                <li>✅ Puedan participar en <strong>dos sesiones de evaluación</strong></li>
+            <ul class="check-list">
+                <li>Hayan tenido <strong>afasia tras un ictus</strong></li>
+                <li>Sean <strong>hablantes nativos de español</strong></li>
+                <li>Tengan entre <strong>18 y 75 años</strong></li>
+                <li>Puedan participar en <strong>dos sesiones de evaluación</strong></li>
             </ul>
         </div>
 
@@ -796,17 +874,17 @@
 
         <div class="card-grid">
             <div class="card">
-                <span class="icon">🗣️</span>
+                <span class="icon"><svg class="i" aria-hidden="true"><use href="#i-speech"/></svg></span>
                 <h4>Hablarás</h4>
                 <p>Describirás algunas láminas, contarás un cuento tradicional que conozcas (con apoyo de imágenes), y explicarás cómo se hace algo cotidiano.</p>
             </div>
             <div class="card">
-                <span class="icon">📝</span>
+                <span class="icon"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg></span>
                 <h4>Harás pruebas de lenguaje</h4>
                 <p>Emparejar palabras con dibujos, repetir palabras y frases, leer palabras, y otras tareas sencillas de lenguaje.</p>
             </div>
             <div class="card">
-                <span class="icon">🧠</span>
+                <span class="icon"><svg class="i" aria-hidden="true"><use href="#i-brain"/></svg></span>
                 <h4>Realizarás tareas cognitivas</h4>
                 <p>Memoria (recordar números), atención, y tareas visuales sencillas.</p>
             </div>
@@ -815,20 +893,20 @@
         <p style="text-align: center; margin: 2rem 0;"><strong>Todo a tu ritmo, sin presión, en un ambiente tranquilo y cómodo.</strong></p>
 
         <h3>¿Dónde será?</h3>
-        <p>📍 <strong>Preferentemente en:</strong></p>
+        <p class="meta-line"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><strong>Preferentemente en:</strong></p>
         <p><strong>Unidad de Neurociencia Cognitiva y Afasia</strong><br>
         Facultad de Psicología y Logopedia<br>
         Universidad de Málaga<br>
         Campus de Teatinos s/n, 29071 Málaga</p>
 
-        <p>🚗 <strong>Si vives en otra provincia de Andalucía:</strong> Podemos valorar opciones para realizar la evaluación en tu zona o en un centro colaborador cercano.</p>
+        <p class="meta-line"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg><strong>Si vives en otra provincia de Andalucía:</strong> Podemos valorar opciones para realizar la evaluación en tu zona o en un centro colaborador cercano.</p>
 
         <h3>¿Qué recibo a cambio?</h3>
-        <ul>
-            <li>✅ Contribuyes al avance científico sobre la afasia en español</li>
-            <li>✅ Evaluación completa del lenguaje sin coste</li>
-            <li>✅ Informe de resultados si lo solicitas</li>
-            <li>✅ Compensación del transporte si tienes dificultades de movilidad</li>
+        <ul class="check-list">
+            <li>Contribuyes al avance científico sobre la afasia en español</li>
+            <li>Evaluación completa del lenguaje sin coste</li>
+            <li>Informe de resultados si lo solicitas</li>
+            <li>Compensación del transporte si tienes dificultades de movilidad</li>
         </ul>
 
         <h3>¿Mis datos estarán protegidos?</h3>
@@ -910,7 +988,7 @@
         <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--color-bg-alt); border-radius: 12px;">
             <h4>Contacto directo</h4>
             <p>¿Prefieres llamar o escribir directamente?</p>
-            <p><strong>📧 Email:</strong> <a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></p>
+            <p class="meta-line"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><strong>Email:</strong> <a href="mailto:mjprioris@uma.es" class="email">mjprioris@uma.es</a></p>
         </div>
     </section>
 
@@ -927,7 +1005,7 @@
             </div>
             <div>
                 <h4>Contacto</h4>
-                <p>📧 <a href="mailto:mjprioris@uma.es">mjprioris@uma.es</a></p>
+                <p class="meta-line"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:mjprioris@uma.es">mjprioris@uma.es</a></p>
             </div>
             <div>
                 <h4>Enlaces</h4>
