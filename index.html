@@ -385,6 +385,73 @@
             text-decoration: underline;
         }
 
+        /* Grupos del equipo */
+        .team-group {
+            display: inline-block;
+            margin: 1rem 0 1.5rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(0, 102, 204, 0.1);
+            color: var(--color-primary-dark);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .team-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-bg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .team-card h4 {
+            margin: 0 0 0.25rem;
+            font-size: 1.1rem;
+            color: var(--color-primary-dark);
+        }
+
+        .team-card .role {
+            margin: 0;
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        .team-avatar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.25rem;
+            height: 3.25rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0066cc 0%, #00a896 100%);
+            color: #fff;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        #equipo {
+            scroll-margin-top: 7rem;
+        }
+
+        @media (max-width: 768px) {
+            #equipo {
+                scroll-margin-top: 9rem;
+            }
+        }
+
         /* Footer */
         footer {
             background: var(--color-primary-dark);
@@ -722,7 +789,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#divulgativa">Información</a></li>
-                <li><a href="#cientifica">Investigadores</a></li>
+                <li><a href="#equipo">Investigadores</a></li>
                 <li><a href="#participar">Participar</a></li>
             </ul>
         </nav>
@@ -924,7 +991,9 @@
         </ul>
         <p>La comparación entre modelos cuantificará la contribución específica del discurso espontáneo.</p>
 
-        <h3>Equipo investigador</h3>
+        <h3 id="equipo">Equipo investigador</h3>
+
+        <p class="team-group">Investigadoras principales</p>
 
         <div class="team-member">
             <h4>Dra. María José Torres Prioris</h4>
@@ -973,6 +1042,31 @@
                 <a href="https://www.researchgate.net/profile/Diana-Lopez-Barroso" target="_blank" style="color: #0066cc; text-decoration: none; font-weight: 500;">ResearchGate</a>
                 <span style="color: #666;">|</span>
                 <a href="https://scholar.google.com/citations?user=FmDdMMcAAAAJ&hl=es&oi=ao" target="_blank" style="color: #0066cc; text-decoration: none; font-weight: 500;">Google Académico</a>
+            </div>
+        </div>
+
+        <p class="team-group">Equipo de investigación</p>
+        <div class="team-grid">
+            <div class="team-card">
+                <span class="team-avatar" aria-hidden="true">GD</span>
+                <div>
+                    <h4>Dra. Guadalupe Dávila</h4>
+                    <p class="role">Profesora Titular de Universidad</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <span class="team-avatar" aria-hidden="true">MB</span>
+                <div>
+                    <h4>Dr. Marcelo L. Berthier</h4>
+                    <p class="role">Catedrático de Universidad<br>Profesor Emérito</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <span class="team-avatar" aria-hidden="true">JP</span>
+                <div>
+                    <h4>Dr. José Paredes Pacheco</h4>
+                    <p class="role">Investigador Postdoctoral</p>
+                </div>
             </div>
         </div>
 
