@@ -397,6 +397,67 @@
             border-color: var(--color-primary);
         }
 
+        /* Ajustes para móvil */
+        .scroll-hint {
+            display: none;
+        }
+
+        .card-grid {
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+        }
+
+        .team-grid {
+            grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+        }
+
+        .radio-group input[type="radio"],
+        .checkbox-group input[type="checkbox"] {
+            width: 1.25rem;
+            height: 1.25rem;
+            flex-shrink: 0;
+            accent-color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .diagram-scroll {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -1rem;
+                padding: 0 1rem;
+            }
+
+            .diagram-scroll svg {
+                min-width: 600px;
+            }
+
+            .scroll-hint {
+                display: block;
+                font-size: 0.9rem;
+                color: var(--color-text-muted);
+                font-style: italic;
+            }
+
+            .nav-links a {
+                display: inline-block;
+                padding: 0.35rem 0;
+            }
+
+            .academic-links span {
+                display: none;
+            }
+
+            .academic-links a {
+                padding: 0.4rem 0.75rem;
+                border: 1px solid var(--color-border);
+                border-radius: 999px;
+                background: var(--color-bg-alt);
+            }
+
+            .radio-group label {
+                padding: 0.4rem 0;
+            }
+        }
+
         /* Grupos del equipo */
         .team-group {
             display: inline-block;
@@ -866,6 +927,8 @@
             
             <p>En cambio, si usamos el sistema RGB (como en las pantallas), <strong>cualquier color se puede describir con precisión usando tres valores</strong>: cuánto rojo tiene, cuánto verde y cuánto azul. Así podemos describir millones de colores diferentes con solo tres dimensiones, en lugar de intentar meterlos todos en unas pocas categorías.</p>
 
+            <p class="scroll-hint">Desliza el gráfico hacia los lados para verlo completo</p>
+            <div class="diagram-scroll">
             <svg width="100%" viewBox="0 0 680 520" style="max-width: 800px; margin: 2rem auto; display: block;">
 <defs>
   <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -917,6 +980,7 @@
 <text style="font-size: 14px; fill: #666" x="340" y="540" text-anchor="middle">Cada persona con afasia tiene su propio "perfil" en múltiples dimensiones:</text>
 <text style="font-size: 14px; fill: #666" x="340" y="558" text-anchor="middle">fluidez, comprensión, gramática, encontrar palabras...</text>
 </svg>
+            </div>
         </div>
 
         <h4>Con la afasia pasa algo parecido:</h4>
